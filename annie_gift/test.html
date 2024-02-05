@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .guess {
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 0;
+            text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 3px 3px 0 #000000;
+        }
+
+        .myimg {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .myimg div {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        img {
+            height: 300px;
+            width: 300px;
+            margin-bottom: 5px;
+        }
+
+        .myButton {
+            background-color: #3498db;
+            color: #000000;
+            font-size: 20px;
+            align-items: center;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: playAnimation 1s steps(8) infinite;
+            text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
+        }
+
+        .myButton:hover {
+            background-color: #ff1900;
+        }
+
+        .helpbtn {
+            background-color: #f45b72;
+            background-image: url('imgs/diwali-sparkles-stars.gif');
+            background-size: 100% 100%;
+            color: #000000;
+            padding: 15px 32px;
+            font-size: 40px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: 2.5px solid #000000;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .helpbtn:hover {
+            background-color: #5d00f4;
+            color: #ffffff;
+            text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+        }
+
+        @keyframes playAnimation {
+            from { background-position: 0; }
+            to { background-position: -800px; }
+        }
+
+        .buttonContainer {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1 class="guess">Guess which one is Kitty.</h1>
+        </div>
+        <div class="myimg">
+            <div><img src="imgs/1688313547928.jpg"><button class="myButton" onclick="handleClick()">1</button></div>
+            <div><img src="imgs/IMG-20211211-WA0264.jpg"><button class="myButton" onclick="handleClick()">2</button></div>
+            <div><img src="imgs/WhatsApp Image 2022-11-02 at 1.47.23 PM.jpeg"><button class="myButton" onclick="handleClick()">3</button></div>
+            <div><img src="imgs/YyjTS4ls_a.jpg"><button class="myButton" onclick="handleClick()">4</button></div>
+        </div>
+        <div class="buttonContainer">
+            <button class="helpbtn" onclick="showCalendar()">Click for help</button>
+            <div id="calendarContainer" style="display: none;">
+                <p>Enter the date of our anniversary to verify:</p>
+                <input type="date" id="anniversaryDate">
+                <button class="btn" onclick="verifyAnniversary()">Verify</button>
+                <p id="verificationMessage" style="color: green; display: none;"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "Q2.html";
+        }
+
+        function handleClick() {
+            alert("Wrong button!");
+        }
+
+        function showCalendar() {
+            document.getElementById('calendarContainer').style.display = 'block';
+        }
+
+        function verifyAnniversary() {
+            var selectedDate = document.getElementById('anniversaryDate').value;
+            if (selectedDate === "2023-08-03") {
+                document.getElementById('verificationMessage').innerText = "Thank you for verifying bebu";
+                document.getElementById('verificationMessage').style.display = 'block';
+                setTimeout(function() {
+                    document.getElementById('verificationMessage').style.display = 'none';
+                    alert("Wait 5 Seconds for the RIYAL Button");
+                    showRiyalButton();
+                }, 5000);
+            } else {
+                alert("Incorrect anniversary date. Please try again.");
+            }
+        }
+
+        function showRiyalButton() {
+            var riyalButton = document.createElement("button");
+            riyalButton.className = "btn";
+            riyalButton.innerText = "RIYAL Button";
+            riyalButton.onclick = function() {
+                window.location.href = "anotherWebpage.html";
+            };
+            document.body.appendChild(riyalButton);
+        }
+    </script>
+</body>
+</html>
